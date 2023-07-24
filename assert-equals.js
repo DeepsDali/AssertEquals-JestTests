@@ -11,7 +11,8 @@ const assertEquals = (expected, actual) => {
     }
     // Compare each element of the arrays
     expected.forEach((expectedElement, index) => {
-      if (expectedElement !== actual[index]) {
+      if (assertEquals(expectedElement, actual[index])) {
+        // Recursively call assertEquals for nested arrays
         throw new Error(
           `Expected ${JSON.stringify(
             expectedElement

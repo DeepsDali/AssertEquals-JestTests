@@ -42,8 +42,17 @@ describe("assertEquals", () => {
       const arr1 = [1, 2, 3];
       const arr2 = [1, 2, 3];
       expect(() => assertEquals(arr1, arr2)).not.toThrow();
+
+      const nestedArr1 = [1, [2, 3], [4, [5]]];
+      const nestedArr2 = [1, [2, 3], [4, [5]]];
+      expect(() => assertEquals(nestedArr1, nestedArr2)).not.toThrow();
+
+      const emptyArr1 = [];
+      const emptyArr2 = [];
+      expect(() => assertEquals(emptyArr1, emptyArr2)).not.toThrow();
     });
   });
+
   //TEST BLOCK 2 of 2 (expected and actual different)
   describe("when expected and actual are different", () => {
     //Compare unequal Primitive Values (String, Numbers, Boolean, Null, Undefined, Symbols)
@@ -82,6 +91,18 @@ describe("assertEquals", () => {
       const arr1 = [1, 2, 3];
       const arr2 = [1, 2, 4]; // Different last element
       expect(() => assertEquals(arr1, arr2)).toThrow();
+
+      const arr3 = [1, 2, 3];
+      const arr4 = ["one", "two", "three"]; // Different type
+      expect(() => assertEquals(arr3, arr4)).toThrow();
+
+      const nestedArr1 = [1, [2, 3], [4, [5]]];
+      const nestedArr2 = [1, [2, 3], [4, [6]]]; // Different nested element
+      expect(() => assertEquals(nestedArr1, nestedArr2)).toThrow();
+
+      const arr5 = [1, 2, 3, 4];
+      const arr6 = [1, 2, 3]; // Different length
+      expect(() => assertEquals(arr5, arr6)).toThrow();
     });
   });
 });
