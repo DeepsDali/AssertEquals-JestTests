@@ -1,13 +1,18 @@
-const assertEquals = require('./assert-equals')
+const assertEquals = require("./assert-equals");
 
-describe('assertEquals', () => {
-  describe('when expected and actual are the same string', () => {
-    it('returns without throwing an error', () => {
-      expect(() => assertEquals('abc', 'abc')).not.toThrow()
-    })
-  })
-
-  describe('when expected and actual are different strings', () => {
-    it.todo('throws an error')
-  })
-})
+describe("assertEquals", () => {
+  //TEST BLOCK 1 of 2 (expected and actual same)
+  describe("when expected and actual are the same", () => {
+    //Compare same Primitive Values (String, Numbers, Boolean, Null, Undefined, Symbols)
+    //Compare same Types
+    //Compare same Regex patterns
+    //Compare same Arrays (Lengths and Elements)
+  });
+  //TEST BLOCK 2 of 2 (expected and actual different)
+  describe("when expected and actual are different", () => {
+    //Compare unequal Primitive Values (String, Numbers, Boolean, Null, Undefined, Symbols)
+    //Compare unequal Types
+    //Compare different Regex patterns
+    //Compare unequal Arrays (Lengths and Elements)
+  });
+});

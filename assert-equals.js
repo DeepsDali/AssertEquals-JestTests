@@ -1,3 +1,3 @@
-function assertEquals(expect, actual) {}
+const assertEquals = (expect, actual) => {};
 
-module.exports = assertEquals
+module.exports = assertEquals;
