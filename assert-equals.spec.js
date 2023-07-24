@@ -58,6 +58,32 @@ describe("assertEquals", () => {
       const emptyArr2 = [];
       expect(() => assertEquals(emptyArr1, emptyArr2)).not.toThrow();
     });
+    it("should not throw an error when applying array methods", () => {
+      const arr1 = [1, 2, 3, 4, 5];
+      const arr2 = [7, 6];
+      const arr3 = [[1], [2], [3, [4, [[5]]]]];
+      const slicedArr = arr1.slice(1, 4);
+      const mappedArr = arr1.map((num) => num * 2);
+      const filteredArr = arr1.filter((num) => num % 2 === 0);
+      const sum = arr1.reduce((acc, num) => acc + num, 0);
+      const hasEven = arr1.some((num) => num % 2 === 0);
+      const found = arr1.find((num) => num > 2);
+      const includesThree = arr1.includes(3);
+      const sortedArr = arr2.sort();
+      const reversedArr = arr1.reverse();
+      const flattened = arr3.flat(Infinity);
+
+      expect(() => assertEquals(slicedArr, [2, 3, 4])).not.toThrow(); // slice
+      expect(() => assertEquals(mappedArr, [2, 4, 6, 8, 10])).not.toThrow(); // map
+      expect(() => assertEquals(filteredArr, [2, 4])).not.toThrow(); // filter
+      expect(() => assertEquals(sum, 15)).not.toThrow(); // reduce
+      expect(() => assertEquals(hasEven, true)).not.toThrow(); // some
+      expect(() => assertEquals(found, 3)).not.toThrow(); // find
+      expect(() => assertEquals(includesThree, true)).not.toThrow(); // includes
+      expect(() => assertEquals(sortedArr, [6, 7])).not.toThrow(); // sort
+      expect(() => assertEquals(reversedArr, [5, 4, 3, 2, 1])).not.toThrow(); // reverse
+      expect(() => assertEquals(flattened, [1, 2, 3, 4, 5])).not.toThrow(); // flat
+    });
   });
 
   //TEST BLOCK 2 of 2 (expected and actual different)
