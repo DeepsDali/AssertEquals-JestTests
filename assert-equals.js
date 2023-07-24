@@ -1,5 +1,5 @@
 const assertEquals = (expected, actual) => {
-  //Check if both expected and actual values are arrays
+  // Case 1: Both expected and actual values are arrays
   if (Array.isArray(expected) && Array.isArray(actual)) {
     if (expected.length !== actual.length) {
       // Array lengths are different
@@ -20,10 +20,21 @@ const assertEquals = (expected, actual) => {
         );
       }
     });
-  } else if (Number.isNaN(expected) && Number.isNaN(actual)) {
+  }
+  // Case 2: Both expected and actual values are NaN
+  else if (Number.isNaN(expected) && Number.isNaN(actual)) {
     // NaN values are considered equal
     return;
-  } else if (expected !== actual) {
+  }
+  // Case 3: Both expected and actual values are RegExp
+  else if (expected instanceof RegExp && actual instanceof RegExp) {
+    if (expected.source !== actual.source || expected.flags !== actual.flags) {
+      // RegExp patterns or flags are different
+      throw new Error(`Expected ${expected} but received ${actual}`);
+    }
+  }
+  // Case 4: All other cases (e.g., primitive types)
+  else if (expected !== actual) {
     // Values are different
     throw new Error(`Expected ${expected} but received ${actual}`);
   }

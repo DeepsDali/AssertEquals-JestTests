@@ -36,6 +36,13 @@ describe("assertEquals", () => {
     });
 
     //Compare same Regex patterns
+
+    it("should not throw an error for same regex pattern", () => {
+      const regex1 = /[^a-zA-Z0-9]/g;
+      const regex2 = /[^a-zA-Z0-9]/g;
+      expect(() => assertEquals(regex1, regex2)).not.toThrow(); // regex should match as same pattern
+    });
+
     //Compare same Arrays (Lengths and Elements)
 
     it("should not throw an error for equal arrays", () => {
@@ -85,6 +92,13 @@ describe("assertEquals", () => {
     });
 
     //Compare different Regex patterns
+
+    it("should throw an error for different regex patterns", () => {
+      const regex1 = /[^a-zA-Z0-9]/g;
+      const regex2 = /[a-z]+/;
+      expect(() => assertEquals(regex1, regex2)).toThrow(); // regex should not match as different pattern
+    });
+
     //Compare unequal Arrays (Lengths and Elements)
 
     it("should throw an error for unequal arrays", () => {
