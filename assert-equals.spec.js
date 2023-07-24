@@ -37,6 +37,12 @@ describe("assertEquals", () => {
 
     //Compare same Regex patterns
     //Compare same Arrays (Lengths and Elements)
+
+    it("should not throw an error for equal arrays", () => {
+      const arr1 = [1, 2, 3];
+      const arr2 = [1, 2, 3];
+      expect(() => assertEquals(arr1, arr2)).not.toThrow();
+    });
   });
   //TEST BLOCK 2 of 2 (expected and actual different)
   describe("when expected and actual are different", () => {
@@ -71,5 +77,11 @@ describe("assertEquals", () => {
 
     //Compare different Regex patterns
     //Compare unequal Arrays (Lengths and Elements)
+
+    it("should throw an error for unequal arrays", () => {
+      const arr1 = [1, 2, 3];
+      const arr2 = [1, 2, 4]; // Different last element
+      expect(() => assertEquals(arr1, arr2)).toThrow();
+    });
   });
 });
