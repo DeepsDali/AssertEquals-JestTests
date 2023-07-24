@@ -27,6 +27,14 @@ describe("assertEquals", () => {
     });
 
     //Compare same Types
+
+    it("should not throw an error for same type of values", () => {
+      expect(() => assertEquals(true, true)).not.toThrow();
+      expect(() => assertEquals(null, null)).not.toThrow();
+      expect(() => assertEquals(typeof "hello", typeof "world")).not.toThrow();
+      expect(() => assertEquals(typeof 1, typeof 1)).not.toThrow();
+    });
+
     //Compare same Regex patterns
     //Compare same Arrays (Lengths and Elements)
   });
@@ -51,7 +59,16 @@ describe("assertEquals", () => {
         )
       ).toThrow(); // Special characters
     });
+
     //Compare unequal Types
+
+    it("should throw an error for different type of values", () => {
+      expect(() => assertEquals(true, false)).toThrow();
+      expect(() => assertEquals(null, undefined)).toThrow();
+      expect(() => assertEquals(typeof null, typeof 0)).toThrow();
+      expect(() => assertEquals(typeof "44", typeof 44)).toThrow();
+    });
+
     //Compare different Regex patterns
     //Compare unequal Arrays (Lengths and Elements)
   });
