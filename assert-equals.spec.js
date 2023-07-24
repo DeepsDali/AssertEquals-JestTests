@@ -58,6 +58,9 @@ describe("assertEquals", () => {
       const emptyArr2 = [];
       expect(() => assertEquals(emptyArr1, emptyArr2)).not.toThrow();
     });
+
+    //Tests for array methods
+
     it("should not throw an error when applying array methods", () => {
       const arr1 = [1, 2, 3, 4, 5];
       const arr2 = [7, 6];
